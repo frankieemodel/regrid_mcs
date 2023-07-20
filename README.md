@@ -1,5 +1,10 @@
 # regrid_mcs
-designed to run on data for *one* time step ie 2d data... so the function extracts date and time for 1 timestep in ncwtools.getdate(filename) and creates a netcdf file with 1D time!
+designed to run a loop on a folder of mcs data files each containing *one* time step ie 2d data... 
+- so it takes MCS datafiles at single timesteps
+- gets data for 1 variable, 'Cloud Track Number,'
+- regrids it to match cygness data lat/lon dimensions,
+- extracts date and time from original filenames for each timestep using ncwtools.getdate(filename)
+- and creates a new netcdf file containing the regridded data for each single timestep
 
 ## Main script is ctngrid_loop.py
 ### variables to change
