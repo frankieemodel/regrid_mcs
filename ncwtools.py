@@ -39,7 +39,7 @@ def makefile(src_path, sv_dir, lat_sel, lon_sel, ctn_fin):
     ds = nc.Dataset(svpath, 'w', format='NETCDF4')
 
     # create 3 dimensions
-    time = ds.createDimension('time', None)
+    time = ds.createDimension('time', 1)
     lat = ds.createDimension('lat', lat_sel.shape[0])
     lon = ds.createDimension('lon', lon_sel.shape[0])
     
