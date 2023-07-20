@@ -8,6 +8,7 @@ designed to run on data for *one* time step ie 2d data... so the function extrac
 ### to test
 19: uncomment/comment this line depending on whether or not you're testing, lest you be waiting a loooong time for your test to run
 
+### outputs
 each loop outputs the filename of the new file to show that the loop is completing - could disable this if you don't want to output 8k filenames - just comment out line 63
 
 loop will run and tell you how long it took in seconds
