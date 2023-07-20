@@ -9,11 +9,16 @@ import time
 # get the start time
 st = time.time()
 
-# file specification must be done in main boss file
+# where to find data to process
 path_to_data = '/Volumes/T7/MCS_PNNL/'
+# where to save processed data
 svdir = '/Volumes/T7/Data/mcs/'
 # get list of file names
 file_list = os.listdir(path_to_data)
+
+# to test
+file_list = file_list[:5]
+
 # name of variable to get from the data file
 var = 'cloudtracknumber'
 
@@ -38,18 +43,16 @@ for fn in file_list[:5]:
     # edit the lon array and lon dimension of ctn 
     # convert from [-180:180] to [0:360]
     new_lon, new_ctn = dataedit.lonarrange(mcs_lon, lat_ctn)
-    # print(new_lon.shape)
+    
     # use nearest neighbor averaging on ctn data and then 
     # subsample data and lat/lon arrays to halve size of dims
     lat_sel, lon_sel, ctn_fin = dataedit.nnaverage(new_lat, new_lon, new_ctn)
 
-    # print(lon_sel.shape)
     # Save data to new nc file
     # get date of data collection from filename
     dt_date = ncwtools.getdate(data_file)
 
     # create netcdf file
-
     new_fn = ncwtools.makefile(
                         data_file, 
                         svdir, 
@@ -57,9 +60,9 @@ for fn in file_list[:5]:
                         lon_sel, 
                         ctn_fin)
     print(new_fn)
+    # returns filename and file should be saved in svdir
 
-    # nothing returned but file should save...
-    # get the end time
+# get the end time
 et = time.time()
 
 # get the execution time
