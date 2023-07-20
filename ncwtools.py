@@ -24,7 +24,7 @@ def makefile(src_path, sv_dir, lat_sel, lon_sel, ctn_fin):
     lat_sel - 1d lat array
     lon_sel - 1d lat array
     ctn_fin - CTN data 2d np array to be written to file
-    returns nothing but creates 
+    returns filename of new file to show that it's completed...
     """
     # get filename using date from og file
     dt_date = getdate(src_path)
@@ -68,8 +68,6 @@ def makefile(src_path, sv_dir, lat_sel, lon_sel, ctn_fin):
     lon[:] = lon_sel
 
     # creating var in question:
-
-    # print(data_file[var_name].standard_name + " std name from file")
     ctn = ds.createVariable('cloudtracknumber', 'i4', ('time', 'lat', 'lon'))
     ctn.units = 'unitless'
     ctn.long_name = "MCS cloud track number"
